@@ -16,6 +16,10 @@ public class MainDemoApp {
         //call the business method
         accountDAO.addAccount(new Account(), true);
         accountDAO.doWork();
+        accountDAO.getName();
+        accountDAO.setName("nurse");
+        accountDAO.getServiceCode();
+        accountDAO.setServiceCode("567");
 
         memberShipDAO.addAccount();
 
