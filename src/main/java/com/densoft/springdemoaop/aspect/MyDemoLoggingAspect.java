@@ -87,7 +87,8 @@ public class MyDemoLoggingAspect {
             result = proceedingJoinPoint.proceed();
         } catch (Exception e) {
             logger.warning(e.getMessage());
-            result = "something went wrong";
+            throw e;
+//            result = "something went wrong";
         }
 
         long end = System.currentTimeMillis();
