@@ -2,6 +2,7 @@ package com.densoft.springdemoaop.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 
@@ -12,9 +13,12 @@ public class MyDemoLoggingAspect {
     //this is an aspect where we add all our related advices for logging
 
 
+    @Pointcut("execution(* com.densoft.springdemoaop.DAO.*.*(..))")
+    public void forDaoPackage() {
+    }
 
-    @Before("execution(* com.densoft.springdemoaop.DAO.*.*(..))")
-    public void beforeAddAccountAdvice(){
+    @Before("forDaoPackage()")
+    public void beforeAddAccountAdvice() {
         System.out.println("\n=======>>> Executing @Before advice on addAccount() <<<<========");
     }
 }
