@@ -4,6 +4,7 @@ import com.densoft.springdemoaop.Account;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
@@ -54,6 +55,17 @@ public class MyDemoLoggingAspect {
         for (Account account : result) {
             account.setName(account.getName().toUpperCase());
         }
+    }
+
+    @AfterThrowing(value = "execution(* com.densoft.springdemoaop.DAO.AccountDAO.findAccounts(..))", throwing = "exception")
+    public void afterThrowingFindAccountsAdvice(JoinPoint joinPoint, Throwable exception) {
+
+        //print the method signature
+        String method  = joinPoint.getSignature().toShortString();
+        System.out.println("\n ======> Executing @AfterThrowing on method "+method);
+
+        //log the exception
+        System.out.println("\n ====> The exception is: " + exception);
     }
 
 }

@@ -21,11 +21,15 @@ public class AccountDAO {
         return true;
     }
 
-    public List<Account> findAccounts() {
+    public List<Account> findAccounts(boolean tripWire) {
         List<Account> accounts = new ArrayList<>();
         accounts.add(new Account("dennis", "vvip"));
         accounts.add(new Account("paul", "vip"));
         accounts.add(new Account("patrick", "member"));
+
+        if (tripWire) {
+            throw new RuntimeException("Something went wrong");
+        }
         return accounts;
     }
 
