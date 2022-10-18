@@ -21,7 +21,7 @@ public class AroundAdviceDemoWithLoggerApp {
         logger.info("\n calling getFortune");
 
         //call the method
-        String result = trafficFortuneService.getFortune();
+        String result = trafficFortuneService.getFortune(true);
 
         logger.info("fortune in the main app: " + result);
 

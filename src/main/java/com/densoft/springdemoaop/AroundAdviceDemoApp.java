@@ -12,7 +12,7 @@ public class AroundAdviceDemoApp {
         TrafficFortuneService trafficFortuneService = context.getBean("trafficFortuneService", TrafficFortuneService.class);
 
         //call the method
-        String result = trafficFortuneService.getFortune();
+        String result = trafficFortuneService.getFortune(false);
 
         System.out.println("fortune in the main app: " + result);
 

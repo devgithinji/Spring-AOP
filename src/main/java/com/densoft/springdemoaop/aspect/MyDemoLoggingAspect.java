@@ -82,7 +82,14 @@ public class MyDemoLoggingAspect {
     public Object aroundGetFortuneAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         logger.info("starting");
         long begin = System.currentTimeMillis();
-        Object result = proceedingJoinPoint.proceed();
+        Object result = null;
+        try {
+            result = proceedingJoinPoint.proceed();
+        } catch (Exception e) {
+            logger.warning(e.getMessage());
+            result = "something went wrong";
+        }
+
         long end = System.currentTimeMillis();
         long duration = end - begin;
         logger.info("\n ======> Duration: " + duration + " milliseconds");
