@@ -3,6 +3,9 @@ package com.densoft.springdemoaop.DAO;
 import com.densoft.springdemoaop.Account;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Repository
 public class AccountDAO {
 
@@ -18,23 +21,31 @@ public class AccountDAO {
         return true;
     }
 
+    public List<Account> findAccounts() {
+        List<Account> accounts = new ArrayList<>();
+        accounts.add(new Account("dennis", "vvip"));
+        accounts.add(new Account("paul", "vip"));
+        accounts.add(new Account("patrick", "member"));
+        return accounts;
+    }
+
     public String getName() {
-        System.out.println(getClass()+" : in getName()");
+        System.out.println(getClass() + " : in getName()");
         return name;
     }
 
     public void setName(String name) {
-        System.out.println(getClass()+" : in setName()");
+        System.out.println(getClass() + " : in setName()");
         this.name = name;
     }
 
     public String getServiceCode() {
-        System.out.println(getClass()+" : in getServiceCode()");
+        System.out.println(getClass() + " : in getServiceCode()");
         return serviceCode;
     }
 
     public void setServiceCode(String serviceCode) {
-        System.out.println(getClass()+" : in setServiceCode()");
+        System.out.println(getClass() + " : in setServiceCode()");
         this.serviceCode = serviceCode;
     }
 }
